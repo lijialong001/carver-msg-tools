@@ -2,36 +2,26 @@
 
 namespace Carver\CarverMsgTools;
 
-use RobotService;
+use Carver\CarverMsgTools\dingding\DingDingRobot;
+
 
 class CarverRobotSdk
 {
     protected  $data = [];
 
-    // public function getRobotType($type)
-    // {
-    //     $className  = 'dingding\\Robot';
-    //     // 使用反射获取类的信息
-    //     $class = new \ReflectionClass($className);
-    //     $methodName = 'createRobot';
-    //     // 检查类是否存在，并且方法是否可调用
-    //     if ($class->hasMethod($methodName) && $class->getMethod($methodName)->isPublic()) {
-    //         // 实例化类
-    //         $object = new $className();
-    //         // 调用方法
-    //         $object->$methodName($data);
-    //     } else {
-    //         // 类或方法不存在的处理逻辑
-    //         exit('this Type not exists!');
-    //     }
-    // }
-
-    // 机器人发送消息
-    public function sendRobotDingDingMsg(...$params)
+    /**
+     * @see 机器人发送消息
+     * @param $params 参数说明如下
+     * 聊天方式                chatType     (int)        1 群聊 2单聊
+     * 发送的消息类型           msgType     (int )      1 text 2 markdown
+     * 发送的消息内容           msgContent  (string)
+     * 机器人@的人员手机号列表   msgReceiver (array)
+     */
+    public function setDingDingMsg(...$params)
     {
         try {
-            if (count($params[0]) != 3) throw new \Exception('请求参数不正确!');
-            return $params;
+            if (!$params) throw new \Exception('Incorrect request parameters!');
+            return DingDingRobot::getInstance()->sendMsg($params[0]);
         } catch (\Exception $e) {
             return json_encode(['code' => 4003, 'msg' => $e->getMessage()]);
         }
