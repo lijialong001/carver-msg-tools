@@ -31,3 +31,6 @@ try {
     var_dump($e->getMessage());
 }
 ```
+
+版本更新可查看:
+https://packagist.org/packages/carver/carver-msg-tools
