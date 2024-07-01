@@ -29,12 +29,12 @@ try {
         'appSecret' => '机器人秘钥',
         'userIds'   => ['1441442424'] //钉钉分配给每个用户的唯一id
     ];
-    //单聊发送文本形式
+    //单聊发送【文本】形式
     $sendContentData = ['content'=>'hello'];
     $result = $robotSdk->setSingleChatTextData($sendContentData)->sendSingleDingDingMsg($singleConfig);
     var_dump(json_decode($result, true));   
      
-    //单聊发送markdown形式
+    //单聊发送【markdown】形式
     $sendContentData = ['title'=>'状态标题,不显示','text'=>'hello'];
     $result = $robotSdk->setSingleChatMarkdownData($sendContentData)->sendSingleDingDingMsg($singleConfig);
     var_dump(json_decode($result, true));
