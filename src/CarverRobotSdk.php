@@ -3,15 +3,18 @@
 namespace Carver\CarverMsgTools;
 
 use Carver\CarverMsgTools\dingding\DingDingRobot;
+use Carver\CarverMsgTools\dingding\AliRobot;
 
 class CarverRobotSdk
 {
     protected $data = [];
-    protected $modelInfo = null;
+    protected $dingDingModelInfo = null;
+    protected $aliModelInfo = null;
 
     public function __construct()
     {
-        if (!$this->modelInfo) $this->modelInfo = new  DingDingRobot();
+        if (!$this->dingDingModelInfo) $this->dingDingModelInfo = new  DingDingRobot();
+        if (!$this->aliModelInfo) $this->aliModelInfo = new  AliRobot();
     }
 
     /**
@@ -29,11 +32,11 @@ class CarverRobotSdk
         try {
             if (!$params) throw new \Exception('Incorrect request parameters!');
             $this->data['sendGroupDingDingMsg'] = $params[0];
-            $this->data['chatType']             = 1;                                         //群聊
-            $checkResultJson                    = $this->modelInfo->checkParams($this->data);//验证发送内容参数
+            $this->data['chatType']             = 1;                                                 //群聊
+            $checkResultJson                    = $this->dingDingModelInfo->checkParams($this->data);//验证发送内容参数
             $checkResult                        = json_decode($checkResultJson, true);
-            if ($checkResult['code'] != 200) return $checkResultJson;                                             //参数验证不通过
-            return $this->modelInfo->sendGroupMsg($this->data, $checkResult['data']['webHook']);                  //发送操作
+            if ($checkResult['code'] != 200) return $checkResultJson;                                                     //参数验证不通过
+            return $this->dingDingModelInfo->sendGroupMsg($this->data, $checkResult['data']['webHook']);                  //发送操作
         } catch (\Exception $e) {
             return json_encode(['code' => 4003, 'msg' => $e->getMessage()]);
         }
@@ -84,10 +87,10 @@ class CarverRobotSdk
         try {
             if (!$params) throw new \Exception('Incorrect request parameters!');
             $this->data['setSingleDingDingMsg'] = $params[0];
-            $checkResultJson                    = $this->modelInfo->checkParams($this->data);//验证发送内容参数
+            $checkResultJson                    = $this->dingDingModelInfo->checkParams($this->data);//验证发送内容参数
             $checkResult                        = json_decode($checkResultJson, true);
-            if ($checkResult['code'] != 200) return $checkResultJson;                                        //参数验证不通过
-            return $this->modelInfo->sendSingleMsg($this->data);                                             //发送操作
+            if ($checkResult['code'] != 200) return $checkResultJson;                                                //参数验证不通过
+            return $this->dingDingModelInfo->sendSingleMsg($this->data);                                             //发送操作
         } catch (\Exception $e) {
             return json_encode(['code' => 4003, 'msg' => $e->getMessage()]);
         }
@@ -126,4 +129,7 @@ class CarverRobotSdk
             return json_encode(['code' => 4003, 'msg' => $e->getMessage()]);
         }
     }
+
+
+
 }
