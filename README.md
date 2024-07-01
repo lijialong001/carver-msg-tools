@@ -32,6 +32,8 @@ try {
     //单聊发送文本形式
     $sendContentData = ['content'=>'hello'];
     $result = $robotSdk->setSingleChatTextData($sendContentData)->sendSingleDingDingMsg($singleConfig);
+    var_dump(json_decode($result, true));   
+     
     //单聊发送markdown形式
     $sendContentData = ['title'=>'状态标题,不显示','text'=>'hello'];
     $result = $robotSdk->setSingleChatMarkdownData($sendContentData)->sendSingleDingDingMsg($singleConfig);
