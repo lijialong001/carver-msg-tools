@@ -46,7 +46,7 @@ try {
         'msgType'=> 1,                  // 1. text文本格式  2. markdown格式
         'msgReceiver'=>['17515487857'], // 被@人的手机号列表
         'msgContent'=>'发送的内容'        // 发送的内容 如果参数 msgType = 2 可以添加自定义的markdown样式
-    ]
+    ];
     $data    = $robotSdk->setWebHook($webHook)->sendGroupDingDingMsg($sendContentData);
     var_dump(json_decode($result, true));
 
