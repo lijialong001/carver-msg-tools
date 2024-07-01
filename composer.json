@@ -1,20 +1,21 @@
 {
-    "name": "carver/carver-msg-tools",
-    "description": "message deal tools",
-    "type": "library",
-    "autoload": {
-        "psr-4": {
-            "Carver\\CarverMsgTools\\": "src/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Carver",
-            "email": "3536828533@qq.com"
-        }
-    ],
-    "license": "MIT",
-    "require": {
-        "guzzlehttp/guzzle": "6.0"
+  "name": "carver/carver-msg-tools",
+  "description": "message deal tools",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Carver\\CarverMsgTools\\": "src/"
     }
+  },
+  "authors": [
+    {
+      "name": "Carver",
+      "email": "3536828533@qq.com"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "guzzlehttp/guzzle": "6.0",
+    "alibabacloud/dyvmsapi-20170525": "3.0.0"
+  }
 }
