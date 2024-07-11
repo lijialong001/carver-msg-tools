@@ -2,9 +2,9 @@
 
 namespace Carver\CarverMsgTools\dingding;
 
-use Carver\CarverMsgTools\BaseRobot;
+use Carver\CarverMsgTools\DingDingBaseRobot;
 
-class DingDingRobot implements BaseRobot
+class Robot implements DingDingBaseRobot
 {
     protected $apiBaseUrl = 'https://oapi.dingtalk.com/robot/send';
 

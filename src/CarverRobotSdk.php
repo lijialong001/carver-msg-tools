@@ -2,8 +2,8 @@
 
 namespace Carver\CarverMsgTools;
 
-use Carver\CarverMsgTools\dingding\DingDingRobot;
-use Carver\CarverMsgTools\dingding\AliRobot;
+use Carver\CarverMsgTools\dingding\Robot as DingDingRobot;
+use Carver\CarverMsgTools\ali\Robot as AliRobot;
 
 class CarverRobotSdk
 {
@@ -130,6 +130,42 @@ class CarverRobotSdk
         }
     }
 
+    /**
+     * @param mixed ...$params 参数说明如下
+     * @return false|string
+     * @author Carver
+     * @see 设置阿里机器人配置信息
+     */
+    public function setAliRobotCallConfig(...$params)
+    {
+        try {
+            if (!$params) throw new \Exception('Incorrect request parameters!');
+            $this->data['sendAliRobotCallConfig'] = $params[0];
+            return $this;
+        } catch (\Exception $e) {
+            return json_encode(['code' => 4003, 'msg' => $e->getMessage()]);
+        }
+    }
+
+    /**
+     * @param mixed ...$params 参数说明如下
+     * @return false|string
+     * @author Carver
+     * @see 阿里机器人语音电话
+     */
+    public function sendAliCall(...$params)
+    {
+        try {
+            if (!$params) throw new \Exception('Incorrect request parameters!');
+            $this->data['setAliRobotInfo'] = $params[0];
+            $checkResultJson               = $this->aliModelInfo->checkParams($this->data);//验证发送内容参数
+            $checkResult                   = json_decode($checkResultJson, true);
+            if ($checkResult['code'] != 200) return $checkResultJson;
+            return $this->aliModelInfo->sendAliCall($this->data);//发送操作
+        } catch (\Exception $e) {
+            return json_encode(['code' => 4003, 'msg' => $e->getMessage()]);
+        }
+    }
 
 
 }

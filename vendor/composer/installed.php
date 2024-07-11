@@ -3,7 +3,7 @@
         'name' => 'carver/carver-msg-tools',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => 'b2161ab778c80c7e796c64187c0561257080fd7d',
+        'reference' => 'f4f22f1c8548d3bb9891f4d86d1bb3761c444cd5',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -103,7 +103,7 @@
         'carver/carver-msg-tools' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b2161ab778c80c7e796c64187c0561257080fd7d',
+            'reference' => 'f4f22f1c8548d3bb9891f4d86d1bb3761c444cd5',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

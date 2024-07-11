@@ -1,7 +1,7 @@
 <?php
 
 namespace Carver\CarverMsgTools;
-interface BaseRobot
+interface DingDingBaseRobot
 {
     public function makeWebHookUrl($params);//生成webHook链接
 
